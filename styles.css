@@ -1,10 +1,11 @@
 :root {
-  --bg: #040506;
-  --text: #f4f2ee;
-  --muted: rgba(244, 242, 238, 0.72);
-  --gold: #efae1f;
-  --aqua: #37efd7;
-  --card: #050607;
+  --bg: #050608;
+  --text: #f5f3ef;
+  --muted: rgba(245, 243, 239, 0.72);
+  --gold: #f5b027;
+  --aqua: #3af0d8;
+  --accent: #ff3d6e;
+  --card: #070809;
   --border: rgba(255, 255, 255, 0.12);
   --header-padding: clamp(1rem, 2.5vw, 1.75rem);
   --scene-padding-x: clamp(1.5rem, 4vw, 3.75rem);
@@ -12,6 +13,10 @@
   --headline-size: clamp(4.4rem, 11vw, 11rem);
   --copy-size: clamp(2.05rem, 4.2vw, 4rem);
   --panel-width: min(31rem, calc(100vw - 2rem));
+  --font-display: "Manrope", system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-mono: "JetBrains Mono", "Space Grotesk", monospace;
+  --font-body: "Space Grotesk", system-ui, sans-serif;
   color-scheme: dark;
 }
 
@@ -32,7 +37,7 @@ body {
   overflow-x: hidden;
   background: var(--bg);
   color: var(--text);
-  font-family: "Outfit", system-ui, sans-serif;
+  font-family: var(--font-body);
   font-weight: 400;
   text-rendering: optimizeLegibility;
 }
@@ -2392,5 +2397,53 @@ button {
 
   .reveal {
     filter: none;
+  }
+}
+
+/* Section lens — smaller magnifier that follows the cursor in each section */
+.section-lens {
+  position: absolute;
+  left: calc(var(--lens-x, 50) * 1%);
+  top: calc(var(--lens-y, 50) * 1%);
+  z-index: 8;
+  width: clamp(4rem, 6vw, 5.5rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.14), transparent 45%),
+    rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(7px) saturate(1.14);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 0 36px rgba(58, 240, 216, 0.1);
+  transform: translate(-50%, -50%);
+  transition: left 140ms ease-out, top 140ms ease-out, opacity 200ms ease;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.section-lens__core {
+  position: absolute;
+  inset: 0.35rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 55%, rgba(58, 240, 216, 0.18), transparent 62%);
+  opacity: 0.75;
+}
+
+.portfolio-scene:hover .section-lens,
+.portfolio-scene:focus-within .section-lens {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .section-lens {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-lens {
+    display: none;
   }
 }

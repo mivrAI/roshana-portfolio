@@ -11,6 +11,7 @@ const playbookScene = document.querySelector(".scene--playbook");
 const lens = document.querySelector(".hero__lens");
 const glassStage = document.querySelector(".hero__glass-stage");
 const portfolioScenes = [...document.querySelectorAll(".portfolio-scene")];
+const sectionLenses = [...document.querySelectorAll(".section-lens")];
 const floatElements = [...document.querySelectorAll("[data-float-speed]")];
 const focusElements = [
   ...document.querySelectorAll(".case-study, .mini-project, .experience-list div, .testimonial-grid article"),
@@ -166,8 +167,8 @@ function initHeroGlassLens() {
 
     ctx.fillStyle = "#e0e6ed";
     ctx.textAlign = "left";
-    ctx.font = `600 ${headlineSize}px Manrope, Outfit, sans-serif`;
-    ctx.fillText("Creative", pad, top);
+    ctx.font = `600 ${headlineSize}px Manrope, sans-serif`;
+    ctx.fillText("Cinematic", pad, top);
 
     ctx.fillStyle = "#f5b027";
     ctx.textAlign = "right";
@@ -176,8 +177,8 @@ function initHeroGlassLens() {
 
     ctx.fillStyle = "#e0e6ed";
     ctx.textAlign = "left";
-    ctx.font = `600 ${headlineSize}px Manrope, Outfit, sans-serif`;
-    ctx.fillText("designer", stageWidth < 680 ? pad : stageWidth * 0.34, top + headlineSize * 1.08);
+    ctx.font = `600 ${headlineSize}px Manrope, sans-serif`;
+    ctx.fillText("editor", stageWidth < 680 ? pad : stageWidth * 0.34, top + headlineSize * 1.08);
 
     textTexture.needsUpdate = true;
   }
@@ -419,4 +420,26 @@ if (heroScene && lens && !reduceMotion) {
   });
 } else if (lens) {
   lens.style.opacity = "0.72";
+}
+
+if (!reduceMotion) {
+  sectionLenses.forEach((lensEl) => {
+    const scene = lensEl.closest(".portfolio-scene");
+    if (!scene) {
+      return;
+    }
+
+    scene.addEventListener("pointermove", (event) => {
+      const rect = scene.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      lensEl.style.setProperty("--lens-x", x.toFixed(2));
+      lensEl.style.setProperty("--lens-y", y.toFixed(2));
+    });
+
+    scene.addEventListener("pointerleave", () => {
+      lensEl.style.setProperty("--lens-x", "50");
+      lensEl.style.setProperty("--lens-y", "50");
+    });
+  });
 }
