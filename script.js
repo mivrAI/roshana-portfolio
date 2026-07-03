@@ -18,6 +18,7 @@ const focusElements = [
 ];
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const rootStyle = document.documentElement.style;
+const clickTargets = [...document.querySelectorAll(".case-study a, .mini-project")];
 
 let heroGlassLens;
 let activeIndex = 0;
@@ -442,4 +443,54 @@ if (!reduceMotion) {
       lensEl.style.setProperty("--lens-y", "50");
     });
   });
+}
+
+/* Click ripple feedback on case studies and mini-projects */
+clickTargets.forEach((target) => {
+  target.addEventListener("pointerdown", (event) => {
+    const rect = target.getBoundingClientRect();
+    target.style.setProperty("--ripple-x", `${event.clientX - rect.left}px`);
+    target.style.setProperty("--ripple-y", `${event.clientY - rect.top}px`);
+    target.classList.remove("is-clicked");
+    void target.offsetWidth;
+    target.classList.add("is-clicked");
+    setTimeout(() => target.classList.remove("is-clicked"), 600);
+  });
+});
+
+/* Stagger + clip-path reveal observer */
+const staggerElements = [...document.querySelectorAll(".reveal-stagger")];
+const revealHeadElements = [...document.querySelectorAll(".reveal-head")];
+
+if ("IntersectionObserver" in window && !reduceMotion) {
+  const staggerObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          staggerObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+  );
+
+  staggerElements.forEach((el) => staggerObserver.observe(el));
+
+  const headObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          headObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.4, rootMargin: "0px 0px -5% 0px" }
+  );
+
+  revealHeadElements.forEach((el) => headObserver.observe(el));
+} else {
+  staggerElements.forEach((el) => el.classList.add("is-visible"));
+  revealHeadElements.forEach((el) => el.classList.add("is-visible"));
 }
