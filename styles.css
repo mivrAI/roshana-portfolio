@@ -106,6 +106,14 @@ button {
   gap: clamp(1rem, 4vw, 4rem);
 }
 
+.site-header__location {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+}
+
 .site-header__link {
   cursor: pointer;
   transition: opacity 180ms ease;
@@ -237,13 +245,16 @@ button {
 }
 
 .hero__line--creative,
-.hero__line--designer {
+.hero__line--designer,
+.hero__line--delivering {
   font-family: "Manrope", system-ui, sans-serif;
   font-size: var(--headline-size);
   font-weight: 600;
 }
 
-.hero__line--visual {
+.hero__line--visual,
+.hero__line--extra,
+.hero__line--impact {
   margin-left: auto;
   margin-right: clamp(1rem, 3vw, 4rem);
   font-family: "Cormorant Garamond", Georgia, serif;
@@ -265,6 +276,22 @@ button {
 .hero__line--designer {
   justify-self: center;
   margin-left: clamp(7rem, 14vw, 18rem);
+}
+
+.hero__line--extra {
+  justify-self: start;
+  margin-left: clamp(2rem, 6vw, 8rem);
+}
+
+.hero__line--delivering {
+  justify-self: center;
+  margin-left: clamp(1rem, 4vw, 6rem);
+}
+
+.hero__line--impact {
+  justify-self: end;
+  margin-right: clamp(1rem, 8vw, 12rem);
+  color: var(--aqua);
 }
 
 .hero__meta {
@@ -2286,12 +2313,19 @@ button {
     max-width: none;
   }
 
-  .hero__line--visual {
+  .hero__line--visual,
+  .hero__line--extra,
+  .hero__line--impact {
     margin-right: 0;
   }
 
-  .hero__line--designer {
+  .hero__line--designer,
+  .hero__line--delivering {
     justify-self: start;
+    margin-left: 0;
+  }
+
+  .hero__line--extra {
     margin-left: 0;
   }
 
