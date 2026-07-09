@@ -842,8 +842,10 @@ button {
   min-height: 100svh;
   padding: 6rem var(--section-gutter);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent 12rem),
-    #080909;
+    radial-gradient(circle at 22% 28%, rgba(55, 120, 255, 0.38), transparent 30%),
+    radial-gradient(circle at 78% 72%, rgba(180, 210, 255, 0.18), transparent 26%),
+    radial-gradient(circle at 50% 50%, rgba(60, 100, 220, 0.22), transparent 28%),
+    linear-gradient(125deg, #010306 0%, #050d18 35%, #0e1822 58%, #07101a 100%);
   color: var(--text);
   font-family: "Manrope", system-ui, sans-serif;
   letter-spacing: 0;
@@ -857,8 +859,8 @@ button {
   pointer-events: none;
   opacity: calc(var(--scene-progress) * 0.22);
   background:
-    radial-gradient(circle at calc(18% + (var(--scene-progress) * 18%)) 18%, rgba(55, 239, 215, 0.18), transparent 22rem),
-    radial-gradient(circle at calc(90% - (var(--scene-progress) * 14%)) 72%, rgba(239, 174, 31, 0.12), transparent 20rem);
+    radial-gradient(circle at calc(18% + (var(--scene-progress) * 18%)) 18%, rgba(55, 120, 255, 0.18), transparent 22rem),
+    radial-gradient(circle at calc(90% - (var(--scene-progress) * 14%)) 72%, rgba(180, 210, 255, 0.12), transparent 20rem);
   transition: opacity 180ms linear;
 }
 
@@ -1580,76 +1582,138 @@ button {
   display: grid;
   align-content: center;
   min-height: 100svh;
-  background:
-    linear-gradient(120deg, rgba(90, 10, 36, 0.5), transparent 32rem),
-    radial-gradient(circle at 80% 60%, rgba(55, 239, 215, 0.06), transparent 28rem),
-    #070808;
 }
 
-.expertise-layout {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2rem;
-  align-items: end;
-  margin-top: 4rem;
+.expertise-header {
+  max-width: 46rem;
+  margin: 3rem 0 4rem;
 }
 
-.expertise-layout h2 {
-  margin: 0;
-  color: rgba(244, 242, 238, 0.1);
+.expertise-title {
+  margin: 0 0 1.5rem;
+  color: rgba(244, 242, 238, 0.95);
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(5rem, 8vw, 8rem);
-  line-height: 0.95;
-  filter: blur(2px);
-  user-select: none;
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
 }
 
-.expertise-layout p {
-  margin: 1rem 0 0;
-  color: rgba(244, 242, 238, 0.74);
-  font-size: 2.3rem;
+.expertise-subtitle {
+  margin: 0;
+  color: rgba(244, 242, 238, 0.68);
+  font-size: clamp(1.05rem, 1.6vw, 1.4rem);
+  line-height: 1.5;
 }
 
-.skill-count {
-  color: rgba(244, 242, 238, 0.9);
-  font-size: 3.5rem;
-  font-weight: 800;
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
 }
 
-.skill-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 0.7rem;
-  margin-top: 4rem;
+.skill-card {
+  --focus: 0;
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  opacity: calc(0.5 + (var(--focus) * 0.5));
+  transform: translate3d(0, calc((1 - var(--focus)) * 1.5rem), 0);
+  transition:
+    opacity 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 260ms ease,
+    background-color 260ms ease;
 }
 
-.skill-cloud span {
-  padding: 0.9rem 1.6rem;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
-  color: rgba(244, 242, 238, 0.82);
-  font-size: clamp(1.1rem, 1.8vw, 1.8rem);
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 320ms ease;
+  pointer-events: none;
+}
+
+.skill-card--a::before { background: radial-gradient(circle at 80% 0%, rgba(55, 120, 255, 0.22), transparent 60%); }
+.skill-card--b::before { background: radial-gradient(circle at 80% 0%, rgba(58, 240, 216, 0.22), transparent 60%); }
+.skill-card--c::before { background: radial-gradient(circle at 80% 0%, rgba(245, 176, 39, 0.22), transparent 60%); }
+.skill-card--d::before { background: radial-gradient(circle at 80% 0%, rgba(255, 61, 110, 0.22), transparent 60%); }
+.skill-card--e::before { background: radial-gradient(circle at 80% 0%, rgba(120, 90, 255, 0.22), transparent 60%); }
+.skill-card--f::before { background: radial-gradient(circle at 80% 0%, rgba(55, 200, 255, 0.22), transparent 60%); }
+
+.skill-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.skill-card:hover::before {
+  opacity: 1;
+}
+
+.skill-card__icon {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.85rem;
+  overflow: hidden;
+  background: #0a0f1a;
+}
+
+.skill-card__icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.78) saturate(1.1);
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), filter 500ms ease;
+}
+
+.skill-card:hover .skill-card__icon img {
+  transform: scale(1.06);
+  filter: brightness(0.9) saturate(1.2);
+}
+
+.skill-card h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: rgba(244, 242, 238, 0.95);
+  font-size: 1.5rem;
   font-weight: 700;
-  transition: border-color 220ms ease, background-color 220ms ease;
+  letter-spacing: -0.03em;
 }
 
-.skill-cloud span:hover {
-  border-color: rgba(55, 239, 215, 0.44);
-  background: rgba(55, 239, 215, 0.06);
+.skill-card p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: rgba(244, 242, 238, 0.62);
+  font-size: 0.98rem;
+  line-height: 1.5;
 }
 
 .portfolio-scene--experience {
   min-height: auto;
   padding-bottom: 5rem;
-  background:
-    linear-gradient(180deg, #070808, #050607),
-    #050607;
 }
 
 .experience-title {
-  margin-top: 5rem;
-  margin-bottom: 2.5rem;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: rgba(244, 242, 238, 0.95);
 }
 
 .experience-list {
@@ -1673,7 +1737,7 @@ button {
 }
 
 .experience-list div:hover {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(55, 120, 255, 0.06);
   padding-left: 0.5rem;
 }
 
@@ -1698,9 +1762,6 @@ button {
 .portfolio-scene--testimonials {
   min-height: auto;
   padding-bottom: 5rem;
-  background:
-    linear-gradient(180deg, #060707 0%, #040506 100%),
-    #040506;
 }
 
 .testimonial-heading {
@@ -1708,62 +1769,126 @@ button {
   margin: 4rem 0 3rem;
 }
 
+.testimonial-heading h2 {
+  margin: 0 0 1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: rgba(244, 242, 238, 0.95);
+}
+
+.testimonial-heading p {
+  margin: 0;
+  color: rgba(244, 242, 238, 0.68);
+  font-size: 1.2rem;
+  line-height: 1.45;
+}
+
 .testimonial-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
-.testimonial-grid article {
+.testimonial-card {
   --focus: 0;
+  position: relative;
   display: grid;
-  align-content: space-between;
-  min-height: 26rem;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0.75rem;
-  color: rgba(244, 242, 238, 0.65);
-  background: rgba(255, 255, 255, 0.01);
-  opacity: calc(0.42 + (var(--focus) * 0.58));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  opacity: calc(0.5 + (var(--focus) * 0.5));
   transform: translate3d(0, calc((1 - var(--focus)) * 1.5rem), 0);
   transition:
-    opacity 240ms linear,
-    transform 240ms linear,
+    opacity 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
     border-color 260ms ease,
     background-color 260ms ease;
 }
 
-.testimonial-grid article:hover {
-  border-color: rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.025);
+.testimonial-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 320ms ease;
+  pointer-events: none;
 }
 
-.testimonial-grid article>span {
-  color: rgba(244, 242, 238, 0.2);
-  font-size: 5rem;
+.testimonial-card--a::before { background: radial-gradient(circle at 100% 0%, rgba(55, 120, 255, 0.2), transparent 55%); }
+.testimonial-card--b::before { background: radial-gradient(circle at 100% 0%, rgba(58, 240, 216, 0.2), transparent 55%); }
+.testimonial-card--c::before { background: radial-gradient(circle at 100% 0%, rgba(245, 176, 39, 0.2), transparent 55%); }
+
+.testimonial-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.testimonial-card:hover::before {
+  opacity: 1;
+}
+
+.testimonial-card__avatar {
+  position: relative;
+  z-index: 1;
+  width: 3.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+}
+
+.testimonial-card__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonial-card__quote-mark {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.14);
   font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 5rem;
   font-weight: 900;
-  line-height: 0.8;
+  line-height: 0.6;
 }
 
-.testimonial-grid p {
-  margin: 1rem 0 2rem;
+.testimonial-card p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: rgba(244, 242, 238, 0.72);
   font-size: 1.05rem;
   line-height: 1.6;
 }
 
-.testimonial-grid footer {
+.testimonial-card footer {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: 0.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1rem;
 }
 
-.testimonial-grid strong {
-  color: rgba(244, 242, 238, 0.85);
-  font-size: 0.95rem;
+.testimonial-card strong {
+  color: rgba(244, 242, 238, 0.9);
+  font-size: 0.98rem;
 }
 
-.testimonial-grid small {
-  color: rgba(244, 242, 238, 0.3);
+.testimonial-card small {
+  color: rgba(244, 242, 238, 0.42);
   font-size: 0.82rem;
 }
 
@@ -1772,10 +1897,6 @@ button {
   align-content: end;
   min-height: 100svh;
   padding-bottom: 3rem;
-  background:
-    radial-gradient(circle at 70% 30%, rgba(255, 20, 60, 0.08), transparent 40%),
-    linear-gradient(180deg, #050607, #030405),
-    #030405;
 }
 
 .contact-visual {
@@ -1788,49 +1909,18 @@ button {
 .contact-visual__image {
   position: absolute;
   inset: 0;
-  opacity: 0.72;
-  filter: grayscale(1) contrast(1.08);
+  opacity: 0.32;
+  filter: grayscale(0.4) contrast(1.05) brightness(0.6);
   transform: scale(calc(1.06 - (var(--scene-progress, 0) * 0.035)));
   transform-origin: center;
 }
 
 .contact-visual::before {
-  content: "Get in touch";
+  content: "";
   position: absolute;
-  left: var(--section-gutter);
-  bottom: 14%;
-  color: rgba(244, 242, 238, 0.82);
-  font-family: "Manrope", system-ui, sans-serif;
-  font-size: clamp(3.5rem, 7vw, 8rem);
-  font-weight: 800;
-  line-height: 1;
-  white-space: nowrap;
-  letter-spacing: -0.05em;
+  inset: 0;
+  background: radial-gradient(circle at 70% 40%, rgba(55, 120, 255, 0.18), transparent 50%);
   pointer-events: none;
-}
-
-.contact-visual__hand {
-  position: absolute;
-  width: 32rem;
-  height: 10rem;
-  border-radius: 999px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(0, 0, 0, 0.06)),
-    #181818;
-  filter: grayscale(1);
-  opacity: 0.78;
-}
-
-.contact-visual__hand--left {
-  left: 8%;
-  bottom: 19%;
-  transform: rotate(-14deg);
-}
-
-.contact-visual__hand--right {
-  right: 2%;
-  bottom: 37%;
-  transform: rotate(12deg);
 }
 
 .contact-visual__mark {
@@ -1838,17 +1928,22 @@ button {
   left: 47%;
   bottom: 31%;
   z-index: 2;
-  color: #ff174d;
-  background: #ff174d;
+  color: #3af0d8;
+  background: rgba(58, 240, 216, 0.12);
+  border-color: #3af0d8;
 }
 
 .portfolio-scene--contact h2 {
   position: relative;
   z-index: 2;
-  color: rgba(244, 242, 238, 0.07);
-  font-size: clamp(4rem, 8vw, 8rem);
-  white-space: nowrap;
-  letter-spacing: -0.04em;
+  margin: 0 0 1.5rem;
+  color: rgba(244, 242, 238, 0.95);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  white-space: normal;
 }
 
 .contact-email {
@@ -1861,7 +1956,7 @@ button {
   font-weight: 800;
   text-decoration: none;
   letter-spacing: -0.04em;
-  border-bottom: 1px solid rgba(244, 242, 238, 0.22);
+  border-bottom: 1px solid rgba(58, 240, 216, 0.4);
   padding-bottom: 0.2rem;
   transition: color 220ms ease, border-color 220ms ease;
 }
@@ -2451,7 +2546,7 @@ button {
   backdrop-filter: blur(7px) saturate(1.14);
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.05) inset,
-    0 0 36px rgba(58, 240, 216, 0.1);
+    0 0 36px rgba(55, 120, 255, 0.12);
   transform: translate(-50%, -50%);
   transition: left 140ms ease-out, top 140ms ease-out, opacity 200ms ease;
   pointer-events: none;
@@ -2462,7 +2557,7 @@ button {
   position: absolute;
   inset: 0.35rem;
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 55%, rgba(58, 240, 216, 0.18), transparent 62%);
+  background: radial-gradient(circle at 50% 55%, rgba(55, 120, 255, 0.18), transparent 62%);
   opacity: 0.75;
 }
 
@@ -2792,5 +2887,37 @@ button {
 
   .parallax-col:nth-child(4) {
     display: none;
+  }
+
+  .skill-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-list div {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 1rem;
+    padding: 1rem 0;
+  }
+
+  .experience-list em {
+    text-align: left;
+  }
+
+  .contact-email {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .skill-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .testimonial-grid {
+    grid-template-columns: 1fr;
   }
 }

@@ -14,7 +14,7 @@ const portfolioScenes = [...document.querySelectorAll(".portfolio-scene")];
 const sectionLenses = [...document.querySelectorAll(".section-lens")];
 const floatElements = [...document.querySelectorAll("[data-float-speed]")];
 const focusElements = [
-  ...document.querySelectorAll(".case-study, .mini-project, .experience-list div, .testimonial-grid article"),
+  ...document.querySelectorAll(".case-study, .mini-project, .experience-list div, .testimonial-grid article, .skill-card"),
 ];
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const rootStyle = document.documentElement.style;
