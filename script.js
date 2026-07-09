@@ -550,8 +550,8 @@ function initParallax() {
   const cols = document.querySelectorAll(".parallax-col");
   if (!gallery || cols.length === 0) return;
 
-  const speeds = [0.8, 2.5, 1.0, 3.0];
-  const baseOffsets = [-30, -60, -20, -50];
+  const speeds = [0.5, 1.5, 0.7, 2.0];
+  const baseOffsets = [0, 0, 0, 0];
 
   let scrollY = window.scrollY;
   let galleryTop = 0;
@@ -565,7 +565,10 @@ function initParallax() {
   }
 
   function update() {
-    const progress = (scrollY - galleryTop + window.innerHeight) / (galleryHeight + window.innerHeight);
+    const viewport = window.innerHeight;
+    const start = galleryTop - viewport;
+    const end = galleryTop + galleryHeight;
+    const progress = (scrollY - start) / (end - start);
     const clamped = Math.max(0, Math.min(1, progress));
 
     cols.forEach((col, i) => {
