@@ -1,104 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Roshana — Motion & Visual Design</title>
-    <meta
-      name="description"
-      content="Welcome to the video editing & motion design portfolio of Roshana. Designing clarity. Building experience. Delivering impact."
-    />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roshana — Video Editor & Motion Designer</title>
+  <meta name="description"
+    content="Roshana is a video editor and motion graphics designer crafting cinematic edits, brand films, and visual stories that move.">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
 
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  </head>
-  <body>
-    <!-- ===== Header ===== -->
-    <header class="site-header">
-      <a class="site-header__brand" href="#hero">ROSHANA</a>
+<body>
+  <div class="page-grain" aria-hidden="true"></div>
 
-      <nav class="site-header__nav" aria-label="Primary navigation">
-        <a class="site-header__link" href="#hero" data-text="Work">Work</a>
-        <a class="site-header__link" href="#about" data-text="About">About</a>
-        <a class="site-header__link" href="#contact" data-text="Contact">Contact</a>
-      </nav>
+  <header class="site-header">
+    <a class="site-header__brand" href="#hero">ROSHANA</a>
 
-      <span class="site-header__location">Colombo</span>
-    </header>
+    <nav class="site-header__nav" aria-label="Primary navigation">
+      <a class="site-header__link" href="#about">ABOUT</a>
+      <a class="site-header__link" href="#work">WORK</a>
+      <a class="site-header__link" href="#contacts">CONTACTS</a>
+    </nav>
+  </header>
 
-    <main>
-      <!-- ===== Hero ===== -->
-      <section class="hero" id="hero">
-        <div class="hero__inner">
-          <p class="hero__tag">
-            <span class="hero__tag-dot"></span>
-            Available for freelance &amp; collabs
+  <main>
+    <section class="scene scene--hero" id="hero" data-scene="hero">
+      <div class="scene__blur scene__blur--left" aria-hidden="true"></div>
+      <div class="scene__blur scene__blur--right" aria-hidden="true"></div>
+      <div class="scene__vignette" aria-hidden="true"></div>
+      <div class="hero__glass-stage" aria-hidden="true"></div>
+
+      <div class="hero__copy">
+        <p class="hero__line hero__line--creative reveal">
+          <span>Cinematic</span>
+        </p>
+
+        <div class="hero__stack reveal reveal--late">
+          <p class="hero__line hero__line--visual">
+            <span>visual</span>
           </p>
 
-          <h1 class="hero__title">
-            <span class="hero__line hero__line--sans text-roll" data-text="Designing">Designing</span>
-            <span class="hero__line hero__line--serif text-roll" data-text="clarity.">clarity.</span>
-            <span class="hero__line hero__line--sans text-roll" data-text="Building">Building</span>
-            <span class="hero__line hero__line--serif text-roll" data-text="experience.">experience.</span>
-            <span class="hero__line hero__line--sans text-roll" data-text="Delivering">Delivering</span>
-            <span class="hero__line hero__line--serif hero__line--accent text-roll" data-text="impact.">impact.</span>
-          </h1>
+          <p class="hero__line hero__line--designer">
+            <span>editor</span>
+          </p>
+        </div>
+      </div>
 
-          <div class="hero__meta">
-            <p>Video Editing / Motion / Color</p>
-            <p>Based in Colombo — Working globally</p>
-          </div>
+      <!-- info -->
+      <div class="hero__meta reveal reveal--late">
+        <div class="hero__meta-block">
+          <p class="hero__meta-top">VIDEO EDITING / MOTION / COLOR</p>
+          <p class="hero__meta-bottom">AVAILABLE FOR FREELANCE &amp; COLLABS WORLDWIDE</p>
         </div>
 
-        <div class="hero__scroll-hint">
-          <span>scroll down to see</span>
-          <span class="hero__scroll-line"></span>
+        <div class="hero__meta-block">
+          <p class="hero__meta-top">BASED IN COLOMBO</p>
+          <p class="hero__meta-bottom">WORKING GLOBALLY</p>
         </div>
-      </section>
+      </div>
 
-      <!-- ===== Oliver Parallax Gallery ===== -->
-      <section class="parallax-gallery" id="gallery">
-        <div class="parallax-gallery__cols" id="parallax-cols">
-          <div class="parallax-col" data-speed="0">
-            <div class="parallax-item"><img src="assets/case-vodafone.png" alt="Vodafone" /></div>
-            <div class="parallax-item"><img src="assets/mini-ai.png" alt="AI" /></div>
-            <div class="parallax-item"><img src="assets/case-monument.png" alt="Monument" /></div>
-          </div>
-          <div class="parallax-col" data-speed="1">
-            <div class="parallax-item"><img src="assets/mini-brand.png" alt="Brand" /></div>
-            <div class="parallax-item"><img src="assets/case-chivas.png" alt="Chivas" /></div>
-            <div class="parallax-item"><img src="assets/mini-commerce.png" alt="Commerce" /></div>
-          </div>
-          <div class="parallax-col" data-speed="2">
-            <div class="parallax-item"><img src="assets/case-defence.png" alt="Defence" /></div>
-            <div class="parallax-item"><img src="assets/mini-editorial.png" alt="Editorial" /></div>
-            <div class="parallax-item"><img src="assets/orbit-interface.png" alt="Interface" /></div>
-          </div>
-          <div class="parallax-col" data-speed="3">
-            <div class="parallax-item"><img src="assets/mini-mobile.png" alt="Mobile" /></div>
-            <div class="parallax-item"><img src="assets/orbit-data.png" alt="Data" /></div>
-            <div class="parallax-item"><img src="assets/mini-system.png" alt="System" /></div>
-          </div>
+      <a class="scroll-hint scroll-hint--hero" href="#about" aria-label="Scroll to about">
+        <span></span>
+      </a>
+
+      <div class="hero__lens" aria-hidden="true">
+        <div class="hero__lens-core"></div>
+      </div>
+    </section>
+
+    <section class="about-hero" id="about" data-scene="about">
+      <div class="about-hero__inner">
+        <p class="about-hero__tag">
+          <span class="about-hero__tag-dot"></span>
+          Available for freelance &amp; collabs
+        </p>
+
+        <h1 class="about-hero__title">
+          <span class="about-hero__line about-hero__line--sans text-roll" data-text="Designing">Designing</span>
+          <span class="about-hero__line about-hero__line--serif text-roll" data-text="clarity.">clarity.</span>
+          <span class="about-hero__line about-hero__line--sans text-roll" data-text="Building">Building</span>
+          <span class="about-hero__line about-hero__line--serif text-roll" data-text="experience.">experience.</span>
+          <span class="about-hero__line about-hero__line--sans text-roll" data-text="Delivering">Delivering</span>
+          <span class="about-hero__line about-hero__line--serif about-hero__line--accent text-roll"
+            data-text="impact.">impact.</span>
+        </h1>
+
+        <div class="about-hero__meta">
+          <p>Video Editing / Motion / Color</p>
+          <p>Based in Colombo — Working globally</p>
         </div>
-      </section>
+      </div>
 
-      <!-- ===== Contact ===== -->
-      <section class="contact" id="contact">
-        <p class="contact__label">Get in touch</p>
-        <a class="contact__email text-roll" href="mailto:hello@roshana.studio" data-text="hello@roshana.studio">
-          hello@roshana.studio
-        </a>
-        <p class="contact__copy">&copy; 2K26 — Roshana. All rights reserved.</p>
-      </section>
-    </main>
+      <div class="about-hero__scroll-hint">
+        <span>scroll down to see</span>
+        <span class="about-hero__scroll-line"></span>
+      </div>
+    </section>
 
-    <script src="script.js"></script>
-  </body>
+    <section class="parallax-gallery" id="work">
+      <div class="parallax-gallery__cols" id="parallax-cols">
+        <div class="parallax-col" data-speed="0">
+          <div class="parallax-item"><img src="assets/case-vodafone.png" alt="Vodafone" /></div>
+          <div class="parallax-item"><img src="assets/mini-ai.png" alt="AI" /></div>
+          <div class="parallax-item"><img src="assets/case-monument.png" alt="Monument" /></div>
+          <div class="parallax-item"><img src="assets/case-monument.png" alt="Monument" /></div>
+        </div>
+        <div class="parallax-col" data-speed="1">
+          <div class="parallax-item"><img src="assets/mini-brand.png" alt="Brand" /></div>
+          <div class="parallax-item"><img src="assets/case-chivas.png" alt="Chivas" /></div>
+          <div class="parallax-item"><img src="assets/mini-commerce.png" alt="Commerce" /></div>
+          <div class="parallax-item"><img src="assets/mini-commerce.png" alt="Commerce" /></div>
+        </div>
+        <div class="parallax-col" data-speed="2">
+          <div class="parallax-item"><img src="assets/case-defence.png" alt="Defence" /></div>
+          <div class="parallax-item"><img src="assets/mini-editorial.png" alt="Editorial" /></div>
+          <div class="parallax-item"><img src="assets/orbit-interface.png" alt="Interface" /></div>
+          <div class="parallax-item"><img src="assets/orbit-interface.png" alt="Interface" /></div>
+        </div>
+        <div class="parallax-col" data-speed="3">
+          <div class="parallax-item"><img src="assets/mini-mobile.png" alt="Mobile" /></div>
+          <div class="parallax-item"><img src="assets/orbit-data.png" alt="Data" /></div>
+          <div class="parallax-item"><img src="assets/mini-system.png" alt="System" /></div>
+          <div class="parallax-item"><img src="assets/mini-system.png" alt="System" /></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene portfolio-scene portfolio-scene--expertise" id="expertise" data-scene="expertise">
+      <div class="section-ruler section-ruler--left" aria-hidden="true"></div>
+      <div class="section-ruler section-ruler--right" aria-hidden="true"></div>
+
+      <div class="section-meta reveal">
+        <span>&copy; Expertise</span>
+        <span>[Key*skills &amp; Tools&reg;]</span>
+        <span>Skillset</span>
+      </div>
+
+      <div class="expertise-layout reveal reveal--late">
+        <div>
+          <h2>Skill {set}</h2>
+          <p>&amp; tools</p>
+        </div>
+        <span class="skill-count">(8)</span>
+      </div>
+
+      <div class="skill-cloud reveal">
+        <span>Premiere Pro</span>
+        <span>After Effects</span>
+        <span>DaVinci Resolve</span>
+        <span>Cinema 4D</span>
+        <span>Color Grading</span>
+        <span>Sound Design</span>
+        <span>Motion Graphics</span>
+        <span>Storytelling</span>
+      </div>
+
+      <div class="section-lens section-lens--expertise" aria-hidden="true">
+        <div class="section-lens__core"></div>
+      </div>
+    </section>
+
+    <section class="scene portfolio-scene portfolio-scene--experience" id="experience" data-scene="experience">
+      <div class="section-ruler section-ruler--left" aria-hidden="true"></div>
+      <div class="section-ruler section-ruler--right" aria-hidden="true"></div>
+
+      <div class="section-meta reveal">
+        <span>&copy; Where I have been</span>
+        <span>[Xp-rience&reg;]</span>
+        <span>Work Experience</span>
+      </div>
+
+      <h2 class="experience-title reveal">Xp-rience&reg;</h2>
+
+      <div class="experience-list reveal reveal--late">
+        <div>
+          <strong>Lead Video Editor</strong>
+          <span>2024 - 2026</span>
+          <b>Independent Studio</b>
+          <em>Colombo</em>
+        </div>
+        <div>
+          <strong>Senior Motion Designer</strong>
+          <span>2022 - 2023</span>
+          <b>Frame By Frame</b>
+          <em>London</em>
+        </div>
+        <div>
+          <strong>Video Editor</strong>
+          <span>2020 - 2022</span>
+          <b>Cutaway Studios</b>
+          <em>Dubai</em>
+        </div>
+        <div>
+          <strong>Junior Editor</strong>
+          <span>2018 - 2020</span>
+          <b>Freelance</b>
+          <em>Worldwide</em>
+        </div>
+        <div>
+          <strong>Production Assistant</strong>
+          <span>2015 - 2018</span>
+          <b>Reel House</b>
+          <em>Remote</em>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene portfolio-scene portfolio-scene--testimonials" id="testimonials" data-scene="testimonials">
+      <div class="section-ruler section-ruler--left" aria-hidden="true"></div>
+      <div class="section-ruler section-ruler--right" aria-hidden="true"></div>
+
+      <div class="section-meta reveal">
+        <span>&copy; Testimonials</span>
+        <span>[Testi_monials&copy;]</span>
+        <span>Real Feedback</span>
+      </div>
+
+      <div class="testimonial-heading reveal">
+        <h2>Kind words from talented people</h2>
+        <p>Real results from real collaborators.</p>
+      </div>
+
+      <div class="testimonial-grid reveal reveal--late">
+        <article>
+          <span>"</span>
+          <p>Roshana has an instinctive feel for pacing and emotion. Every cut lands with purpose and the whole piece
+            breathes.</p>
+          <footer>
+            <strong>Nolan, Anthoula</strong>
+            <small>Creative Director</small>
+          </footer>
+        </article>
+        <article>
+          <span>"</span>
+          <p>She brings cinematic craft and momentum. The edit got tighter, the motion got richer, and our team could
+            ship with confidence.</p>
+          <footer>
+            <strong>O'Connor, Jonathon-Marc</strong>
+            <small>Producer</small>
+          </footer>
+        </article>
+        <article>
+          <span>"</span>
+          <p>Her color and sound work gave the film a premium, intentional feel from the very first frame to the last.
+          </p>
+          <footer>
+            <strong>Williams, Chris</strong>
+            <small>Director of Photography</small>
+          </footer>
+        </article>
+      </div>
+
+      <div class="section-lens section-lens--testimonials" aria-hidden="true">
+        <div class="section-lens__core"></div>
+      </div>
+    </section>
+
+    <section class="scene portfolio-scene portfolio-scene--contact" id="contacts" data-scene="contacts">
+      <div class="section-ruler section-ruler--left" aria-hidden="true"></div>
+      <div class="section-ruler section-ruler--right" aria-hidden="true"></div>
+
+      <div class="contact-visual" aria-hidden="true">
+        <img class="contact-visual__image" src="assets/contact-hands.png" alt="">
+        <span class="contact-visual__mark">RS</span>
+      </div>
+
+      <h2 class="reveal">Get in touch</h2>
+      <a class="contact-email reveal reveal--late" href="mailto:hello@roshana.studio">hello@roshana.studio</a>
+
+      <div class="contact-footer reveal">
+        <button type="button" data-panel-target="socials">Socials</button>
+        <span>&copy;2026 Roshana. All rights reserved.</span>
+      </div>
+
+      <div class="section-lens section-lens--contact" aria-hidden="true">
+        <div class="section-lens__core"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="panel-shell" hidden>
+    <div class="panel-shell__backdrop" data-close-panel></div>
+
+    <aside class="info-panel" role="dialog" aria-modal="true" aria-labelledby="panel-title">
+      <button class="info-panel__close" type="button" data-close-panel aria-label="Close panel">&times;</button>
+
+      <div class="info-panel__content info-panel__content--socials" data-panel="socials">
+        <p class="info-panel__eyebrow">SOCIALS</p>
+        <h2 class="info-panel__title" id="panel-title">Places to keep up with Roshana</h2>
+        <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
+        <a href="https://vimeo.com/" target="_blank" rel="noreferrer">Vimeo</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+      </div>
+
+      <div class="info-panel__content info-panel__content--contacts" data-panel="contacts">
+        <p class="info-panel__eyebrow">CONTACTS</p>
+        <h2 class="info-panel__title">Open for selective freelance work worldwide.</h2>
+        <a href="mailto:hello@roshana.studio">hello@roshana.studio</a>
+        <a href="tel:+940000000000">+94 (0) 000 000 000</a>
+        <p class="info-panel__note">Based in Colombo, working across film, brand, and social video.</p>
+      </div>
+    </aside>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
 </html>
